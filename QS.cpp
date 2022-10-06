@@ -136,16 +136,17 @@ void QS::sortAll() {
 		cout << "ptr is not the NULL\n";
 		int left = 0;
 		int right = currPos;
-		this->partition(left,right,this->medianOfThree(left,right));
+		int pivot = this->partition(left,right,this->medianOfThree(left,right));
 		cout << "\nChecking the order\n";
 		for(int i = 0; i < size-1; i++){
-			cout << "Loop " << i << endl;
+			cout << "Loop " << i << ":";
+			cout << "\t" << this->getArray() << endl;
 			if(*(ptr+i) < *(ptr+(i+1))){
-				cout << "\t" << i << " and " << i+1 << "in order\n";
+				cout << "\t" << i << " and " << i+1 << " in order\n\n";
 				//DO NOTHING
 			}
 			else{
-				cout << "not in order, recursive call\n";
+				cout << "\t" << i << " and " << i+1 << " not in order, recursive call\n\n";
 				this->sortAll();
 			}
 		}
