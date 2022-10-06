@@ -17,6 +17,8 @@ int main() {
 		qsptr->addToArray(array[i]);
 	}
 
+	//cout << qsptr->getArray() << endl << endl;
+	
 	/*
 	cout << "\nFinished the for loop\n";												//Check getSize
 	cout << "Num of items added: " << qsptr->getSize() << endl;
@@ -28,6 +30,12 @@ int main() {
 	cout << qsptr->getArray() << endl;
 	*/
 
-	qsptr->medianOfThree(0,7);
+	/*
+	int tempPiv = qsptr->partition(7,0,qsptr->medianOfThree(0,7));
+	cout << "Pivot point is " << tempPiv << endl;
+	cout << qsptr->getArray() << endl;
+	*/
+
+	qsptr->sortAll();
 	cout << qsptr->getArray() << endl;
 }

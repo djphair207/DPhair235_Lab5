@@ -96,9 +96,56 @@ int QS::medianOfThree(int left, int right) {
 		else{
 			//DO NOTHING
 		}
-		cout << "{" << *(ptr+left) << ", " << *(ptr+middle) << ", " << *(ptr+right) << "}\n";	//DEBUG
+		//cout << "{" << *(ptr+left) << ", " << *(ptr+middle) << ", " << *(ptr+right) << "}\n";	//DEBUG
 	} while (*(ptr+middle) < *(ptr+left) || *(ptr+right) < *(ptr+middle));
 	return middle;
 }
 /* * * * * * * * * * * * * * * */
+int QS::partition(int left, int right, int pivotIndex){
+	if(ptr == NULL || left < 0 || left >= currPos || right < 0 || right >= currPos || right < left || pivotIndex < left || pivotIndex > right){
+		//cout << "bad inputs or empty array\n";			//DEBUG
+		return -1;
+	}
+	swap(*(ptr+left),*(ptr+pivotIndex));
+	int up = 1;
+	int down = size - 1;
+	do{
+		while(*(ptr+up) <= *(ptr+left) && up < (size - 1)){
+			up++;
+		}
+		while(*(ptr+down) > *(ptr+left) && down > 0){
+			down--;
+		}
+		if(up < down){
+			swap(*(ptr+up),*(ptr+down));
+		}
+	} while(up < down);
+	swap(*(ptr+left),*(ptr+down));
+	return down;
+}
+/* * * * * * * * * * * * * * * */
+void QS::sortAll() {
+	if(ptr == NULL){
+		//DO NOTHING
+	}
+	else{
+		cout << "ptr is not the NULL\n";
+		int left = 0;
+		int right = currPos;
+		this->partition(left,right,this->medianOfThree(left,right));
+		cout << "\nChecking the order\n";
+		for(int i = 0; i < size-1; i++){
+			cout << "Loop " << i << endl;
+			if(*(ptr+i) < *(ptr+(i+1))){
+				cout << "\t" << i << " and " << i+1 << "in order\n";
+				//DO NOTHING
+			}
+			else{
+				cout << "not in order, recursive call\n";
+				this->sortAll();
+			}
+		}
+		//sort all needs to sort the whole array so use 0 for left and currPos for right
+	}
+}
 

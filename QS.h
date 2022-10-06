@@ -14,15 +14,13 @@ protected:
 	string arrayStr;
 public:
 	~QS() {}
-	void sortAll() {}
-	int medianOfThree(int left, int right);		//DONE
-	int partition(int left, int right, int pivotIndex)
-	{ int done;
-		return done; }
-	string getArray() const;				//DONE
-	int getSize() const;						//DONE
-	bool addToArray(int value);			//DONE
-	bool createArray(int capacity);	//DONE
+	void sortAll();
+	int medianOfThree(int left, int right);							//DONE
+	int partition(int left, int right, int pivotIndex);	//DONE
+	string getArray() const;														//DONE
+	int getSize() const;																//DONE
+	bool addToArray(int value);													//DONE
+	bool createArray(int capacity);											//DONE
 	void clear();
 };
 
