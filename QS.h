@@ -16,6 +16,7 @@ protected:
 public:
 	~QS() {}
 	void sortAll();
+	void recursiveSort(int left, int right);
 	int medianOfThree(int left, int right);							//DONE
 	int partition(int left, int right, int pivotIndex);	//DONE
 	string getArray() const;														//DONE

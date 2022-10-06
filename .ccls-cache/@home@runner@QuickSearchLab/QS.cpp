@@ -84,7 +84,7 @@ int QS::medianOfThree(int left, int right) {
 	}
 	else{
 		middle = (left + right)/2;
-		cout << "Middle index is " << middle << endl;		//DEBUG
+		//cout << "Middle index is " << middle << endl;		//DEBUG
 	}
 	do{
 		if(*(ptr+middle) < *(ptr+left)){
@@ -107,13 +107,13 @@ int QS::partition(int left, int right, int pivotIndex){
 		return -1;
 	}
 	swap(*(ptr+left),*(ptr+pivotIndex));
-	int up = 1;
-	int down = size - 1;
+	int up = left + 1;
+	int down = right;
 	do{
-		while(*(ptr+up) <= *(ptr+left) && up < (size - 1)){
+		while(*(ptr+up) <= *(ptr+left) && up < (right - 1)){
 			up++;
 		}
-		while(*(ptr+down) > *(ptr+left) && down > 0){
+		while(*(ptr+down) > *(ptr+left) && down > left){
 			down--;
 		}
 		if(up < down){
@@ -124,19 +124,30 @@ int QS::partition(int left, int right, int pivotIndex){
 	return down;
 }
 /* * * * * * * * * * * * * * * */
-void QS::sortAll() {
+void QS::recursiveSort(int left, int right){
+	//DEBUG: make sure no inf. loop
+	/*
 	counter++;
 	if(counter > 10){
-		return;
-	}
+		return;	//stop the madness
+	}*/
+
 	if(ptr == NULL){
-		//DO NOTHING
+		return;	//DO NOTHING
+	}
+	else if(currPos == 1){
+		return;	//DO NOTHING
 	}
 	else{
-		cout << "ptr is not the NULL\n";
-		int left = 0;
-		int right = currPos;
 		int pivot = this->partition(left,right,this->medianOfThree(left,right));
+		cout << "Pivot is: " << pivot << endl;
+		cout << "\tresult of partition:\t";
+		cout << this->getArray() << endl;
+		
+		this->recursiveSort(left, pivot-1);
+		this->recursiveSort(pivot+1,right);
+
+		/*
 		cout << "\nChecking the order\n";
 		for(int i = 0; i < size-1; i++){
 			cout << "Loop " << i << ":";
@@ -146,11 +157,15 @@ void QS::sortAll() {
 				//DO NOTHING
 			}
 			else{
-				cout << "\t" << i << " and " << i+1 << " not in order, recursive call\n\n";
-				this->sortAll();
+				
 			}
-		}
-		//sort all needs to sort the whole array so use 0 for left and currPos for right
+		}*/ //DEBUG: for checking the order, not complete
 	}
 }
+/* * * * * * * * * * * * * * * */
+void QS::sortAll() {
+	//cout << "currPos is: " << currPos << endl;
+	this->recursiveSort(0,currPos-1);
+}
+
 
