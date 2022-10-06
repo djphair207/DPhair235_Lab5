@@ -12,6 +12,7 @@ protected:
 	int currPos = 0;
 	int size = 0;
 	string arrayStr;
+	int counter = 0;		//DEBUG
 public:
 	~QS() {}
 	void sortAll();

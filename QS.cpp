@@ -125,6 +125,10 @@ int QS::partition(int left, int right, int pivotIndex){
 }
 /* * * * * * * * * * * * * * * */
 void QS::sortAll() {
+	counter++;
+	if(counter > 10){
+		return;
+	}
 	if(ptr == NULL){
 		//DO NOTHING
 	}

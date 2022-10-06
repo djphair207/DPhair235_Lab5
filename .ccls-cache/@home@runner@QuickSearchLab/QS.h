@@ -8,25 +8,21 @@ using namespace std;
 
 class QS : QSInterface {
 protected:
-	int *ptr;
+	int* ptr;
 	int currPos = 0;
+	int size = 0;
 	string arrayStr;
+	int counter = 0;		//DEBUG
 public:
 	~QS() {}
-	void sortAll() {}
-	int medianOfThree(int left, int right) 
-{ int done;
-	return done; }
-	int partition(int left, int right, int pivotIndex)
-{ int done;
-	return done; }
-	string getArray() const;
-	int getSize() const
-{ int done;
-	return done; }
-	bool addToArray(int value);
-	bool createArray(int capacity);
-	void clear() {}
+	void sortAll();
+	int medianOfThree(int left, int right);							//DONE
+	int partition(int left, int right, int pivotIndex);	//DONE
+	string getArray() const;														//DONE
+	int getSize() const;																//DONE
+	bool addToArray(int value);													//DONE
+	bool createArray(int capacity);											//DONE
+	void clear();
 };
 
 
